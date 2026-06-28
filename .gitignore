@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Internal project notes — never deploy publicly
+CLAUDE.md

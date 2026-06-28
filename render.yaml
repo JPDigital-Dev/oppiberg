@@ -1,0 +1,41 @@
+# Render Blueprint — Oppi Berg static demo site.
+#
+# This is a no-build static site: index.html and images/ are served as-is from the
+# repo root. Render applies this file when the service is created from a Blueprint
+# (New > Blueprint, point it at this repo) OR synced from Settings > Blueprint.
+#
+# Security headers mirror the jp-digital site, trimmed to what this page actually
+# uses: Google Fonts (CSS + font files) and an inline SVG favicon (img-src data:).
+# No analytics, no form backend, so connect-src stays 'self'. The CSP is enforcing
+# here because the allow-list is small and verified; loosen only if you add scripts.
+
+services:
+  - name: oppi-berg-demo
+    type: web
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: "camera=(), microphone=(), geolocation=()"
+      - path: /*
+        name: Content-Security-Policy
+        value: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline';
+          style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+          font-src 'self' https://fonts.gstatic.com;
+          img-src 'self' data:;
+          object-src 'none';
+          base-uri 'self';
+          form-action 'self'

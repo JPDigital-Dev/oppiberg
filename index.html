@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oppi Berg — Restaurant, Lodge &amp; Venue · Lydenburg, Mpumalanga</title>
+<meta name="description" content="Oppi Berg — restaurant, self-catering lodge and wedding venue on the mountain, 17 km from Lydenburg (Mashishing), Mpumalanga. Mountain views, a fully licensed restaurant and a Sunday buffet.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='9'%20fill='%23c2632f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&amp;family=Pinyon+Script&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f2ebdc; --bg-alt:#e9dfca; --card:#fbf6ec; --text:#3a2d20; --head:#5f4128;
+    --strong:rgba(58,45,32,0.95); --body:rgba(58,45,32,0.8); --soft:rgba(58,45,32,0.62);
+    --mute:rgba(58,45,32,0.5);
+    --line:rgba(58,45,32,0.14); --line-soft:rgba(58,45,32,0.09); --border:rgba(58,45,32,0.2);
+    --ember:#c2632f; --ember-hover:#d06f37; --ember-soft:rgba(194,99,47,0.4); --ember-wash:rgba(194,99,47,0.08);
+    --gold:#97774a;
+  }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family:'Hanken Grotesk', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  *, *::before, *::after { box-sizing: border-box; }
+  ::selection { background: #c2632f; color: #fbf6ec; }
+  input::placeholder, textarea::placeholder { color: rgba(58,45,32,0.42); }
+
+  /* Nav — light scrim over the hero at the top, solid once scrolled */
+  #nav { background: linear-gradient(180deg, rgba(20,12,8,0.55) 0%, rgba(20,12,8,0) 100%); border-bottom:1px solid transparent; transition: background 0.35s ease, border-color 0.35s ease; }
+  #nav.scrolled { background: rgba(242,235,220,0.94); border-bottom-color: var(--line); }
+  .nav-brand { color:#f7efe2; transition:color 0.35s ease; }
+  #nav.scrolled .nav-brand { color:#5f4128; }
+  .nav-link { color:rgba(247,239,226,0.82); transition:color 0.35s ease; }
+  #nav.scrolled .nav-link { color:var(--body); }
+  .nav-link:hover { color:var(--ember); }
+  .nav-enquire { background:#f7efe2; color:#3a2d20; transition:background 0.35s ease, color 0.35s ease; }
+  #nav.scrolled .nav-enquire { background:#5f4128; color:#f2ebdc; }
+
+  /* Interactive states (ports of the prototype's style-hover / style-focus) */
+  .btn-ember { transition: background 0.25s ease; }
+  .btn-ember:hover { background: var(--ember-hover); }
+  .btn-outline-light { transition: border-color 0.25s ease, color 0.25s ease; }
+  .btn-outline-light:hover { border-color:#e08a4f; color:#e08a4f; }
+  .field { transition: border-color 0.2s ease; }
+  .field:focus { border-color: var(--ember); }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:16px clamp(20px,5vw,64px); backdrop-filter:blur(6px);">
+    <a href="#top" class="nav-brand" style="text-decoration:none; font-family:'Pinyon Script', cursive; font-size:30px; line-height:1; display:flex; align-items:center; gap:11px; padding-bottom:4px;">
+      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember); box-shadow:0 0 12px 1px var(--ember-soft);"></span>
+      Oppi&nbsp;Berg
+    </a>
+    <div style="display:flex; align-items:center; gap:clamp(16px,2.4vw,34px); font-size:14.5px; letter-spacing:0.01em;">
+      <a href="#restaurant" class="nav-link" style="text-decoration:none;">Restaurant</a>
+      <a href="#weddings" class="nav-link" style="text-decoration:none;">Weddings</a>
+      <a href="#reviews" class="nav-link" style="text-decoration:none;">Reviews</a>
+      <a href="#enquiry" class="nav-enquire" style="text-decoration:none; padding:9px 18px; border-radius:3px; font-weight:600;">Enquire</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" style="position:relative; height:100vh; min-height:640px; width:100%; display:flex; align-items:flex-end; overflow:hidden; background:#241710;">
+    <div style="position:absolute; inset:0; background:url('images/hero-golden.webp') center/cover no-repeat;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(36,23,16,0.4) 0%, rgba(36,23,16,0.1) 26%, rgba(36,23,16,0.48) 62%, rgba(36,23,16,0.96) 100%);"></div>
+    <div style="position:relative; z-index:2; padding:0 clamp(20px,5vw,72px) clamp(52px,8vh,92px); max-width:1040px;">
+      <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:13px; letter-spacing:0.28em; text-transform:uppercase; color:#e08a4f; margin-bottom:18px;">Lydenburg · Mpumalanga</div>
+      <div style="font-family:'Pinyon Script', cursive; font-size:clamp(66px,12vw,150px); line-height:0.9; color:#f7efe2; margin:0 0 clamp(20px,3.4vh,34px); text-shadow:0 2px 24px rgba(0,0,0,0.35);">Oppi Berg</div>
+      <div style="font-family:'Cormorant Garamond', serif; font-weight:500; font-size:clamp(21px,3.4vw,38px); letter-spacing:0.16em; text-transform:uppercase; color:rgba(247,239,226,0.84); margin:0 0 clamp(34px,5vh,48px);">Restaurant &nbsp;·&nbsp; Lodge &nbsp;·&nbsp; Venue</div>
+      <p style="font-size:clamp(17px,2.1vw,21px); line-height:1.55; max-width:520px; margin:0 0 36px; color:rgba(247,239,226,0.88);">Mountain views over Lydenburg. Restaurant, lodge &amp; venue.</p>
+      <a href="#enquiry" class="btn-ember" style="display:inline-flex; align-items:center; gap:12px; text-decoration:none; background:var(--ember); color:#fbf6ec; font-weight:600; font-size:16px; padding:16px 30px; border-radius:3px; box-shadow:0 12px 36px -12px rgba(194,99,47,0.7);">Check availability <span style="font-size:18px;">→</span></a>
+    </div>
+  </header>
+
+  <!-- THE STAY -->
+  <section id="stay" style="padding:clamp(84px,13vh,150px) clamp(20px,5vw,72px); max-width:1240px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(44px,6vw,88px); align-items:center;">
+      <div>
+        <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold); margin-bottom:22px;">01 — The Stay</div>
+        <h2 style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(38px,5.4vw,64px); line-height:1.04; margin:0 0 24px; letter-spacing:0.002em; color:var(--head);">A quiet landing after a long day's travel.</h2>
+        <p style="font-size:17px; line-height:1.7; color:var(--body); margin:0 0 30px; max-width:480px;">Self-catering units up on the mountain, well away from the road and the noise. Settle in, open the curtains to the valley, and let the day wind down.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          <span style="font-size:14px; padding:9px 16px; border:1px solid var(--border); border-radius:3px; color:var(--strong);">En-suite bathrooms</span>
+          <span style="font-size:14px; padding:9px 16px; border:1px solid var(--border); border-radius:3px; color:var(--strong);">Kitchenettes</span>
+          <span style="font-size:14px; padding:9px 16px; border:1px solid var(--border); border-radius:3px; color:var(--strong);">Satellite TV</span>
+          <span style="font-size:14px; padding:9px 16px; border:1px solid var(--border); border-radius:3px; color:var(--strong);">Self-catering</span>
+        </div>
+      </div>
+      <div style="position:relative; aspect-ratio:4/5; border-radius:5px; overflow:hidden; background:url('images/stay-beds.webp') center/cover no-repeat;"></div>
+    </div>
+  </section>
+
+  <!-- THE RESTAURANT -->
+  <section id="restaurant" style="background:var(--bg-alt); padding:clamp(84px,13vh,150px) clamp(20px,5vw,72px); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);">
+    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(44px,6vw,88px); align-items:center;">
+      <div style="position:relative; aspect-ratio:5/4; border-radius:5px; overflow:hidden; background:url('images/restaurant-patio.webp') center/cover no-repeat; order:2;"></div>
+      <div style="order:1;">
+        <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--ember); margin-bottom:22px;">02 — The Restaurant</div>
+        <h2 style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(38px,5.4vw,64px); line-height:1.04; margin:0 0 24px; letter-spacing:0.002em; color:var(--head);">Long tables, late light, generous plates.</h2>
+        <p style="font-size:17px; line-height:1.7; color:var(--body); margin:0 0 28px; max-width:480px;">Fully licensed, buffet and à la carte. Doors open to the valley, plates come out generous, and dinner runs long into the evening light.</p>
+        <div style="display:grid; gap:0; max-width:470px;">
+          <div style="display:flex; gap:18px; padding:18px 0; border-top:1px solid var(--line);">
+            <span style="font-family:'Cormorant Garamond', serif; color:var(--ember); font-size:24px; line-height:1; min-width:22px;">—</span>
+            <div><div style="font-size:16px; font-weight:600; margin-bottom:3px; color:var(--text);">Fully licensed</div><div style="font-size:14.5px; color:var(--soft);">A proper bar to go with dinner.</div></div>
+          </div>
+          <div style="display:flex; gap:18px; padding:18px 0; border-top:1px solid var(--line);">
+            <span style="font-family:'Cormorant Garamond', serif; color:var(--ember); font-size:24px; line-height:1; min-width:22px;">—</span>
+            <div><div style="font-size:16px; font-weight:600; margin-bottom:3px; color:var(--text);">Buffet &amp; à la carte</div><div style="font-size:14.5px; color:var(--soft);">Order to the table, or help yourself.</div></div>
+          </div>
+          <div style="display:flex; gap:18px; padding:18px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+            <span style="font-family:'Cormorant Garamond', serif; color:var(--ember); font-size:24px; line-height:1; min-width:22px;">—</span>
+            <div><div style="font-size:16px; font-weight:600; margin-bottom:3px; color:var(--text);">Sunday buffet</div><div style="font-size:14.5px; color:var(--soft);">With fresh-baked bread, every week.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:1240px; margin:clamp(72px,10vh,116px) auto 0; padding-top:clamp(60px,8vh,92px); border-top:1px solid var(--line);">
+      <div style="max-width:660px;">
+        <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold); margin-bottom:22px;">Every Sunday</div>
+        <h3 style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(34px,4.8vw,56px); line-height:1.05; margin:0 0 20px; color:var(--head);">A proper Sunday spread.</h3>
+        <p style="font-size:17px; line-height:1.7; color:var(--body); margin:0;">Every Sunday we lay on a full buffet — from bean soup and fresh-baked bread through to pudding by the fire. It runs alongside our regular à la carte menu, so come hungry.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:clamp(30px,4vw,56px); margin-top:clamp(44px,6vh,68px);">
+        <div>
+          <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ember); padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line);">Starter</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head);">Bean soup with fresh mini buns &amp; garlic bread</div>
+        </div>
+        <div>
+          <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ember); padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line);">Salads</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head); margin-bottom:8px;">Greek salad</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head);">Curry pasta salad</div>
+        </div>
+        <div>
+          <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ember); padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line);">Sides</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head); margin-bottom:8px;">Pumpkin fritters</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head); margin-bottom:8px;">Seasonal vegetables</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head); margin-bottom:8px;">White rice</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head);">Roasted potatoes</div>
+        </div>
+        <div>
+          <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ember); padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line);">Mains</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head); margin-bottom:8px;">Pot roast</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head);">Chicken à la king</div>
+        </div>
+        <div>
+          <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ember); padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line);">Dessert</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head); margin-bottom:8px;">Chocolate cake</div>
+          <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head);">Hot fudge pudding</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEDDINGS & FUNCTIONS -->
+  <section id="weddings" style="position:relative; padding:clamp(96px,15vh,184px) clamp(20px,5vw,72px); overflow:hidden; background:#241710;">
+    <div style="position:absolute; inset:0; background:url('images/weddings-sunset.webp') center/cover no-repeat;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(36,23,16,0.78), rgba(36,23,16,0.93));"></div>
+    <div style="position:relative; z-index:2; max-width:900px; margin:0 auto; text-align:center;">
+      <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:#d4a85f; margin-bottom:24px;">03 — Weddings &amp; Functions</div>
+      <h2 style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(42px,6.4vw,80px); line-height:1.02; margin:0 0 26px; letter-spacing:0.004em; color:#f7efe2;">Say it with the whole valley behind you.</h2>
+      <p style="font-size:clamp(17px,2vw,20px); line-height:1.65; color:rgba(247,239,226,0.82); max-width:600px; margin:0 auto 40px;">A venue and conference facilities on the mountain — weddings, celebrations and gatherings, with views no marquee in town can match. Tell us what you're planning and we'll build it around the day.</p>
+      <a href="#enquiry" class="btn-outline-light" style="display:inline-flex; align-items:center; gap:12px; text-decoration:none; border:1px solid rgba(247,239,226,0.42); color:#f7efe2; font-weight:600; font-size:16px; padding:15px 30px; border-radius:3px;">Enquire about your event <span>→</span></a>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="background:var(--bg-alt); padding:clamp(84px,13vh,150px) clamp(20px,5vw,72px); border-top:1px solid var(--line-soft);">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:20px; margin-bottom:clamp(44px,6vh,68px);">
+        <div style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(54px,8vw,86px); line-height:0.9; color:var(--ember);">4.2</div>
+        <div>
+          <div style="font-size:22px; letter-spacing:0.16em; color:var(--ember);">★★★★<span style="opacity:0.3;">★</span></div>
+          <div style="font-size:15px; color:var(--soft); margin-top:5px;">191 Google reviews</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+        <figure style="margin:0; padding:34px; background:var(--card); border:1px solid var(--line); border-radius:5px;">
+          <blockquote style="margin:0 0 24px; font-family:'Cormorant Garamond', serif; font-weight:500; font-size:25px; line-height:1.38; color:var(--head);">"You forget the drive the moment you see the view. We sat outside until it was dark."</blockquote>
+          <figcaption style="font-size:13px; color:var(--mute); font-family:'Spline Sans Mono', monospace; letter-spacing:0.04em;">Google review</figcaption>
+        </figure>
+        <figure style="margin:0; padding:34px; background:var(--card); border:1px solid var(--line); border-radius:5px;">
+          <blockquote style="margin:0 0 24px; font-family:'Cormorant Garamond', serif; font-weight:500; font-size:25px; line-height:1.38; color:var(--head);">"Sias and Evelene make you feel like you've been coming for years. The Sunday buffet is the real deal."</blockquote>
+          <figcaption style="font-size:13px; color:var(--mute); font-family:'Spline Sans Mono', monospace; letter-spacing:0.04em;">Google review</figcaption>
+        </figure>
+        <figure style="margin:0; padding:34px; background:var(--card); border:1px solid var(--line); border-radius:5px;">
+          <blockquote style="margin:0 0 24px; font-family:'Cormorant Garamond', serif; font-weight:500; font-size:25px; line-height:1.38; color:var(--head);">"Quiet, clean and warm. We had dinner by the fireplace and watched the lights of the town below."</blockquote>
+          <figcaption style="font-size:13px; color:var(--mute); font-family:'Spline Sans Mono', monospace; letter-spacing:0.04em;">Google review</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY -->
+  <section id="enquiry" style="padding:clamp(84px,13vh,150px) clamp(20px,5vw,72px); max-width:1240px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(48px,6vw,88px);">
+      <div>
+        <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--ember); margin-bottom:22px;">04 — Enquiry</div>
+        <h2 style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(38px,5.4vw,64px); line-height:1.04; margin:0 0 22px; letter-spacing:0.002em; color:var(--head);">Tell us when, and how many.</h2>
+        <p style="font-size:16px; line-height:1.65; color:var(--soft); margin:0 0 34px; max-width:420px;">Send us the dates and we'll come back to you personally — this is an enquiry, not an instant booking.</p>
+        <div style="display:grid; gap:18px; max-width:420px;">
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <span style="color:var(--gold); font-family:'Cormorant Garamond', serif; font-size:22px; line-height:1;">◦</span>
+            <div><div style="font-size:15.5px; font-weight:600; margin-bottom:3px; color:var(--text);">Where we are</div><div style="font-size:14.5px; line-height:1.6; color:var(--soft);">On the mountain off the R37 toward Burgersfort, 17&nbsp;km outside Lydenburg (Mashishing), Mpumalanga.</div></div>
+          </div>
+        </div>
+        <div style="margin-top:26px; position:relative; aspect-ratio:16/9; border-radius:5px; overflow:hidden; background:url('images/location-valley.webp') center/cover no-repeat; max-width:460px;">
+          <span style="position:absolute; bottom:12px; left:14px; font-family:'Spline Sans Mono', monospace; font-size:11px; letter-spacing:0.08em; color:#f7efe2; text-transform:uppercase; background:rgba(36,23,16,0.55); padding:5px 9px; border-radius:3px;">R37 · 17 km from Lydenburg</span>
+        </div>
+      </div>
+
+      <div>
+        <div id="enquiry-success" style="display:none; height:100%; min-height:340px; flex-direction:column; justify-content:center; align-items:flex-start; padding:44px; border:1px solid var(--ember-soft); border-radius:5px; background:var(--ember-wash);">
+          <div style="font-family:'Pinyon Script', cursive; font-size:54px; line-height:1; margin-bottom:18px; color:var(--head);">Dankie!</div>
+          <p style="font-size:16px; line-height:1.65; color:var(--body); margin:0;">We've got your enquiry. Sias or Evelene will be in touch personally about your dates.</p>
+        </div>
+        <form id="enquiry-form" style="display:grid; gap:18px;">
+          <div style="display:grid; gap:7px;">
+            <label for="f-name" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Name</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name" class="field" placeholder="Your name" style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none;">
+          </div>
+          <div style="display:grid; gap:7px;">
+            <label for="f-contact" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Contact (email or phone)</label>
+            <input id="f-contact" name="contact" type="text" required autocomplete="off" class="field" placeholder="How we reach you" style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+            <div style="display:grid; gap:7px;">
+              <label for="f-dates" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Dates</label>
+              <input id="f-dates" name="dates" type="text" class="field" placeholder="e.g. 12–14 Sept" style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none;">
+            </div>
+            <div style="display:grid; gap:7px;">
+              <label for="f-guests" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Guests</label>
+              <input id="f-guests" name="guests" type="number" min="1" class="field" placeholder="2" style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none;">
+            </div>
+          </div>
+          <div style="display:grid; gap:7px;">
+            <label for="f-message" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Message</label>
+            <textarea id="f-message" name="message" rows="4" class="field" placeholder="Lodge, dinner, a wedding? Tell us a little." style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none; resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn-ember" style="margin-top:6px; background:var(--ember); color:#fbf6ec; border:none; font-family:inherit; font-weight:600; font-size:16px; padding:16px 24px; border-radius:3px; cursor:pointer;">Send enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid var(--line); padding:52px clamp(20px,5vw,72px); display:flex; flex-wrap:wrap; gap:22px; justify-content:space-between; align-items:center;">
+    <div style="font-family:'Pinyon Script', cursive; font-size:32px; line-height:1; display:flex; align-items:center; gap:11px; color:var(--head); padding-bottom:4px;">
+      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember);"></span>
+      Oppi Berg
+    </div>
+    <div style="font-family:'Spline Sans Mono', monospace; font-size:12.5px; letter-spacing:0.06em; color:var(--mute);">R37 · 17km from Lydenburg (Mashishing) · Mpumalanga</div>
+  </footer>
+
+  <script>
+    // Nav: solid background once the page is scrolled past the hero crest.
+    (function () {
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        nav.classList.toggle('scrolled', window.scrollY > 48);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // Enquiry form: swap to the "Dankie!" confirmation (no backend in this demo).
+    (function () {
+      var form = document.getElementById('enquiry-form');
+      var success = document.getElementById('enquiry-success');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        form.style.display = 'none';
+        success.style.display = 'flex';
+      });
+    })();
+  </script>
+
+</body>
+</html>

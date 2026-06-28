@@ -265,12 +265,30 @@
       onScroll();
     })();
 
-    // Enquiry form: swap to the "Dankie!" confirmation (no backend in this demo).
+    // Enquiry form: open the owner's email client pre-filled (mailto fallback —
+    // no backend in this demo), then show the "Dankie!" confirmation.
     (function () {
+      // Enquiries are emailed here.
+      var ENQUIRY_EMAIL = 'Liezl@lionval.co.za';
       var form = document.getElementById('enquiry-form');
       var success = document.getElementById('enquiry-success');
+      var val = function (id) { return (document.getElementById(id).value || '').trim(); };
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        var name = val('f-name');
+        var body = [
+          'Name: ' + name,
+          'Contact: ' + val('f-contact'),
+          'Dates: ' + (val('f-dates') || '—'),
+          'Guests: ' + (val('f-guests') || '—'),
+          '',
+          'Message:',
+          val('f-message') || '—'
+        ].join('\n');
+        var href = 'mailto:' + ENQUIRY_EMAIL +
+          '?subject=' + encodeURIComponent('Oppi Berg enquiry — ' + (name || 'website')) +
+          '&body=' + encodeURIComponent(body);
+        window.location.href = href;
         form.style.display = 'none';
         success.style.display = 'flex';
       });

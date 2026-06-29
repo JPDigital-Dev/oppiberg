@@ -35,13 +35,69 @@
   .nav-enquire { background:#f7efe2; color:#3a2d20; transition:background 0.35s ease, color 0.35s ease; }
   #nav.scrolled .nav-enquire { background:#5f4128; color:#f2ebdc; }
 
+  /* Nav links container (desktop: inline row, right-aligned) */
+  .nav-links { display:flex; align-items:center; gap:clamp(16px,2.4vw,34px); font-size:14.5px; letter-spacing:0.01em; }
+
+  /* Hamburger toggle — hidden on desktop, shown below the breakpoint */
+  .nav-toggle { display:none; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:44px; height:44px; padding:0; background:none; border:none; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+  .nav-toggle-bar { display:block; width:24px; height:2px; border-radius:2px; background:#f7efe2; transition:background 0.35s ease, transform 0.3s ease, opacity 0.25s ease; }
+  #nav.scrolled .nav-toggle-bar, #nav.menu-open .nav-toggle-bar { background:#5f4128; }
+
+  @media (max-width: 768px) {
+    .nav-toggle { display:flex; }
+
+    /* While the menu is open the bar goes solid cream so it reads even over the hero */
+    #nav.menu-open { background: rgba(242,235,220,0.98); border-bottom-color: var(--line); }
+    #nav.menu-open .nav-brand { color:#5f4128; }
+    #nav.menu-open .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #nav.menu-open .nav-toggle-bar:nth-child(2) { opacity:0; }
+    #nav.menu-open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Dropdown panel under the bar */
+    .nav-links {
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:stretch; gap:0;
+      padding:6px clamp(20px,5vw,64px) 18px;
+      background: rgba(242,235,220,0.98);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 16px 30px -18px rgba(36,23,16,0.5);
+      max-height:0; opacity:0; visibility:hidden; transform:translateY(-8px); overflow:hidden;
+      transition:max-height 0.34s ease, opacity 0.28s ease, transform 0.28s ease, visibility 0s linear 0.34s;
+    }
+    #nav.menu-open .nav-links {
+      max-height:380px; opacity:1; visibility:visible; transform:translateY(0);
+      transition:max-height 0.34s ease, opacity 0.28s ease, transform 0.28s ease, visibility 0s;
+    }
+    .nav-links .nav-link {
+      color:var(--body) !important;
+      padding:15px 2px; font-size:17px;
+      border-bottom:1px solid var(--line-soft);
+    }
+    .nav-links .nav-link:hover { color:var(--ember) !important; }
+    .nav-links .nav-enquire {
+      margin-top:14px; text-align:center;
+      background:var(--ember) !important; color:#fbf6ec !important;
+      padding:15px 18px; font-size:16px;
+    }
+  }
+
+  /* Honour reduced-motion for the menu animation */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-links, #nav.menu-open .nav-links, .nav-toggle-bar { transition: none !important; }
+  }
+
   /* Interactive states (ports of the prototype's style-hover / style-focus) */
   .btn-ember { transition: background 0.25s ease; }
   .btn-ember:hover { background: var(--ember-hover); }
   .btn-outline-light { transition: border-color 0.25s ease, color 0.25s ease; }
   .btn-outline-light:hover { border-color:#e08a4f; color:#e08a4f; }
-  .field { transition: border-color 0.2s ease; }
+  .field { transition: border-color 0.2s ease; min-width:0; max-width:100%; }
   .field:focus { border-color: var(--ember); }
+
+  /* Stack the Dates/Guests pair on narrow phones */
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns:1fr !important; }
+  }
 </style>
 </head>
 <body>
@@ -52,7 +108,12 @@
       <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember); box-shadow:0 0 12px 1px var(--ember-soft);"></span>
       Oppi&nbsp;Berg
     </a>
-    <div style="display:flex; align-items:center; gap:clamp(16px,2.4vw,34px); font-size:14.5px; letter-spacing:0.01em;">
+    <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div id="nav-menu" class="nav-links">
       <a href="#restaurant" class="nav-link" style="text-decoration:none;">Restaurant</a>
       <a href="#weddings" class="nav-link" style="text-decoration:none;">Weddings</a>
       <a href="#reviews" class="nav-link" style="text-decoration:none;">Reviews</a>
@@ -66,7 +127,7 @@
     <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(36,23,16,0.4) 0%, rgba(36,23,16,0.1) 26%, rgba(36,23,16,0.48) 62%, rgba(36,23,16,0.96) 100%);"></div>
     <div style="position:relative; z-index:2; padding:0 clamp(20px,5vw,72px) clamp(52px,8vh,92px); max-width:1040px;">
       <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:13px; letter-spacing:0.28em; text-transform:uppercase; color:#e08a4f; margin-bottom:18px;">Lydenburg · Mpumalanga</div>
-      <div style="font-family:'Pinyon Script', cursive; font-size:clamp(66px,12vw,150px); line-height:0.9; color:#f7efe2; margin:0 0 clamp(20px,3.4vh,34px); text-shadow:0 2px 24px rgba(0,0,0,0.35);">Oppi Berg</div>
+      <div style="font-family:'Pinyon Script', cursive; font-size:clamp(54px,12vw,150px); line-height:0.9; color:#f7efe2; margin:0 0 clamp(20px,3.4vh,34px); text-shadow:0 2px 24px rgba(0,0,0,0.35);">Oppi Berg</div>
       <div style="font-family:'Cormorant Garamond', serif; font-weight:500; font-size:clamp(21px,3.4vw,38px); letter-spacing:0.16em; text-transform:uppercase; color:rgba(247,239,226,0.84); margin:0 0 clamp(34px,5vh,48px);">Restaurant &nbsp;·&nbsp; Lodge &nbsp;·&nbsp; Venue</div>
       <p style="font-size:clamp(17px,2.1vw,21px); line-height:1.55; max-width:520px; margin:0 0 36px; color:rgba(247,239,226,0.88);">Mountain views over Lydenburg. Restaurant, lodge &amp; venue.</p>
       <a href="#enquiry" class="btn-ember" style="display:inline-flex; align-items:center; gap:12px; text-decoration:none; background:var(--ember); color:#fbf6ec; font-weight:600; font-size:16px; padding:16px 30px; border-radius:3px; box-shadow:0 12px 36px -12px rgba(194,99,47,0.7);">Check availability <span style="font-size:18px;">→</span></a>
@@ -75,7 +136,7 @@
 
   <!-- THE STAY -->
   <section id="stay" style="padding:clamp(84px,13vh,150px) clamp(20px,5vw,72px); max-width:1240px; margin:0 auto;">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(44px,6vw,88px); align-items:center;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(44px,6vw,88px); align-items:center;">
       <div>
         <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold); margin-bottom:22px;">01 — The Stay</div>
         <h2 style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(38px,5.4vw,64px); line-height:1.04; margin:0 0 24px; letter-spacing:0.002em; color:var(--head);">A quiet landing after a long day's travel.</h2>
@@ -93,7 +154,7 @@
 
   <!-- THE RESTAURANT -->
   <section id="restaurant" style="background:var(--bg-alt); padding:clamp(84px,13vh,150px) clamp(20px,5vw,72px); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);">
-    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(44px,6vw,88px); align-items:center;">
+    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(44px,6vw,88px); align-items:center;">
       <div style="position:relative; aspect-ratio:5/4; border-radius:5px; overflow:hidden; background:url('images/restaurant-patio.webp') center/cover no-repeat; order:2;"></div>
       <div style="order:1;">
         <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--ember); margin-bottom:22px;">02 — The Restaurant</div>
@@ -123,7 +184,7 @@
         <p style="font-size:17px; line-height:1.7; color:var(--body); margin:0;">Every Sunday we lay on a full buffet — from bean soup and fresh-baked bread through to pudding by the fire. It runs alongside our regular à la carte menu, so come hungry.</p>
       </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:clamp(30px,4vw,56px); margin-top:clamp(44px,6vh,68px);">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:clamp(30px,4vw,56px); margin-top:clamp(44px,6vh,68px);">
         <div>
           <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ember); padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--line);">Starter</div>
           <div style="font-family:'Cormorant Garamond', serif; font-size:21px; line-height:1.4; color:var(--head);">Bean soup with fresh mini buns &amp; garlic bread</div>
@@ -176,7 +237,7 @@
           <div style="font-size:15px; color:var(--soft); margin-top:5px;">191 Google reviews</div>
         </div>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:24px;">
         <figure style="margin:0; padding:34px; background:var(--card); border:1px solid var(--line); border-radius:5px;">
           <blockquote style="margin:0 0 24px; font-family:'Cormorant Garamond', serif; font-weight:500; font-size:25px; line-height:1.38; color:var(--head);">"Clean rooms with good facilities. Good food with nice atmosphere overlooking Lydenburg town and mountains. Very affordable as well."</blockquote>
           <figcaption style="font-size:13px; color:var(--mute); font-family:'Spline Sans Mono', monospace; letter-spacing:0.04em;">Google review</figcaption>
@@ -195,7 +256,7 @@
 
   <!-- ENQUIRY -->
   <section id="enquiry" style="padding:clamp(84px,13vh,150px) clamp(20px,5vw,72px); max-width:1240px; margin:0 auto;">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(48px,6vw,88px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(48px,6vw,88px);">
       <div>
         <div style="font-family:'Hanken Grotesk', sans-serif; font-weight:600; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:var(--ember); margin-bottom:22px;">04 — Enquiry</div>
         <h2 style="font-family:'Cormorant Garamond', serif; font-weight:600; font-size:clamp(38px,5.4vw,64px); line-height:1.04; margin:0 0 22px; letter-spacing:0.002em; color:var(--head);">Tell us when, and how many.</h2>
@@ -216,7 +277,7 @@
           <div style="font-family:'Pinyon Script', cursive; font-size:54px; line-height:1; margin-bottom:18px; color:var(--head);">Dankie!</div>
           <p style="font-size:16px; line-height:1.65; color:var(--body); margin:0;">We've got your enquiry. We'll be in touch personally about your dates.</p>
         </div>
-        <form id="enquiry-form" style="display:grid; gap:18px;">
+        <form id="enquiry-form" style="display:grid; grid-template-columns:minmax(0,1fr); gap:18px;">
           <div style="display:grid; gap:7px;">
             <label for="f-name" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Name</label>
             <input id="f-name" name="name" type="text" required autocomplete="name" class="field" placeholder="Your name" style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none;">
@@ -225,7 +286,7 @@
             <label for="f-contact" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Contact (email or phone)</label>
             <input id="f-contact" name="contact" type="text" required autocomplete="off" class="field" placeholder="How we reach you" style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none;">
           </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div class="form-row" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:18px;">
             <div style="display:grid; gap:7px;">
               <label for="f-dates" style="font-size:13px; letter-spacing:0.04em; color:var(--soft);">Dates</label>
               <input id="f-dates" name="dates" type="text" class="field" placeholder="e.g. 12–14 Sept" style="background:var(--card); border:1px solid var(--border); border-radius:3px; padding:14px 16px; color:var(--text); font-family:inherit; font-size:15px; outline:none;">
@@ -263,6 +324,62 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+
+    // Mobile nav: hamburger toggle with outside-click, Escape, and link close.
+    (function () {
+      var nav = document.getElementById('nav');
+      var toggle = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+
+      function isOpen() { return nav.classList.contains('menu-open'); }
+
+      function openMenu() {
+        nav.classList.add('menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close menu');
+        document.addEventListener('keydown', onKeydown);
+        document.addEventListener('click', onOutside, true);
+      }
+
+      function closeMenu(returnFocus) {
+        if (!isOpen()) return;
+        nav.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        document.removeEventListener('keydown', onKeydown);
+        document.removeEventListener('click', onOutside, true);
+        if (returnFocus) toggle.focus();
+      }
+
+      function onKeydown(e) {
+        if (e.key === 'Escape' || e.key === 'Esc') closeMenu(true);
+      }
+
+      function onOutside(e) {
+        if (!nav.contains(e.target)) closeMenu(false);
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (isOpen()) { closeMenu(false); }
+        else {
+          openMenu();
+          // move focus to the first menu item for keyboard users
+          var first = menu.querySelector('a');
+          if (first) first.focus();
+        }
+      });
+
+      // Tapping any menu link closes the menu (links are in-page anchors).
+      menu.addEventListener('click', function (e) {
+        if (e.target.closest('a')) closeMenu(false);
+      });
+
+      // If the viewport grows back to desktop, clear the mobile state.
+      window.matchMedia('(min-width: 769px)').addEventListener('change', function (ev) {
+        if (ev.matches) closeMenu(false);
+      });
     })();
 
     // Enquiry form: open the owner's email client pre-filled (mailto fallback —
